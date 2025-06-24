@@ -194,7 +194,6 @@ body {
   font-size: 1.125rem;
   line-height: 1.625;
   color: var(--text-secondary);
-  text-align:left;
 }
 
 .highlight-text {
@@ -272,7 +271,7 @@ body {
 }
 
 .about-description {
-  text-align: center;
+  text-align:left;
 }
 
 @media (min-width: 768px) {
