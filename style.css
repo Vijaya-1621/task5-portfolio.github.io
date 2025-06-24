@@ -23,7 +23,7 @@ body {
     background-size: 600% 600%;
     animation: gradientAnimation 15s ease infinite;
     color: var(--text-primary);
-    min-height: 100vh;
+    min-height: 10vh;
     display: flex;
     flex-direction: column;
     margin: 0;
@@ -111,6 +111,42 @@ body {
 .nav-item:hover {
     color: var(--accent-indigo);
 }
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    padding: 0;
+    z-index: 60;
+}
+
+.menu-toggle div {
+    width: 2rem;
+    height: 0.25rem;
+    background: var(--text-primary);
+    border-radius: 0.25rem;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+}
+
+.menu-toggle.open div:nth-child(1) {
+    transform: rotate(45deg);
+}
+
+.menu-toggle.open div:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.open div:nth-child(3) {
+    transform: rotate(-45deg);
+}
+
 
 .main-content {
     flex-grow: 1;
@@ -242,6 +278,13 @@ body {
     .about-description {
         text-align: left;
     }
+
+    .nav-links {
+        display: flex;
+    }
+    .menu-toggle {
+        display: none;
+    }
 }
 
 .projects-grid {
@@ -370,4 +413,41 @@ body {
 
 .form-textarea {
     resize: vertical;
+}
+
+@media (max-width: 767px) {
+    .navbar-container {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        margin-top: 1rem;
+        background-color: rgba(31, 41, 55, 0.9);
+        border-radius: 0.5rem;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        max-height: 0;
+    }
+
+    .nav-links.open {
+        max-height: 200px;
+    }
+
+    .nav-item {
+        padding: 0.75rem 0;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav-item:last-child {
+        border-bottom: none;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
 }
