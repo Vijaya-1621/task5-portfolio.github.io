@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VIJAYA THOTAKURA - Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Link to your custom CSS file -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Navbar -->
     <nav class="navbar">
         <div class="navbar-container">
             <div class="logo-area">
@@ -19,6 +17,11 @@
                 </svg>
                 <span class="site-title">Vijaya Portfolio</span>
             </div>
+            <button class="menu-toggle" aria-label="Toggle navigation menu">
+                <div></div>
+                <div></div>
+                <div></div>
+            </button>
             <div class="nav-links">
                 <a href="#about" class="nav-item">About Me</a>
                 <a href="#projects" class="nav-item">Projects</a>
@@ -29,7 +32,6 @@
     </nav>
 
     <main class="main-content">
-        <!-- About Me Section -->
         <section id="about" class="section-common">
             <div class="card about-card">
                 <div class="about-header">
@@ -44,12 +46,10 @@
             </div>
         </section>
 
-        <!-- Projects Section -->
         <section id="projects" class="section-common section-dark-bg">
             <div class="section-container">
                 <h2 class="section-heading">Projects</h2>
                 <div class="projects-grid">
-                    <!-- To-Do List Project Card -->
                     <div class="card project-card">
                         <img src="todolist-img.png" alt="To-Do List Icon" class="project-image">
                         <h3 class="project-title">To-Do List Application</h3>
@@ -59,7 +59,6 @@
                         <a href="todolist-details.html" class="button button-secondary">Read More</a>
                     </div>
 
-                    <!-- Quiz Website Project Card -->
                     <div class="card project-card">
                         <img src="quiz-img.png" alt="Quiz Website Icon" class="project-image">
                         <h3 class="project-title">Quiz Website</h3>
@@ -72,7 +71,6 @@
             </div>
         </section>
 
-        <!-- Skills Section -->
         <section id="skills" class="section-common">
             <div class="card skills-card">
                 <h2 class="section-heading">Skills</h2>
@@ -120,7 +118,6 @@
             </div>
         </section>
 
-        <!-- Contact Me Section -->
         <section id="contact" class="section-common section-dark-bg">
             <div class="card contact-card">
                 <h2 class="section-heading">Contact Me</h2>
@@ -145,7 +142,6 @@
         </section>
     </main>
 
-    <!-- JavaScript for smooth scrolling -->
     <script>
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -153,7 +149,24 @@
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
+
+                // Close the mobile menu after clicking a link
+                const navLinks = document.querySelector('.nav-links');
+                const menuToggle = document.querySelector('.menu-toggle');
+                if (navLinks.classList.contains('open')) {
+                    navLinks.classList.remove('open');
+                    menuToggle.classList.remove('open');
+                }
             });
+        });
+
+        // Navbar toggle for mobile
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+            menuToggle.classList.toggle('open');
         });
     </script>
 
